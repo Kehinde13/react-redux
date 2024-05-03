@@ -11,4 +11,5 @@ export const store = configureStore({
 
 //export types from redux
 export type rootState = ReturnType<typeof store.getState>
+//this is need when working with asynchoronous actions
 export type AppDispatch = typeof store.dispatch

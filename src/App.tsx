@@ -2,12 +2,15 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { rootState } from './store'
-import { decrement, increment, incrementBy } from './store/counter/counterSlice'
+import { AppDispatch, rootState } from './store'
+import { decrement, increment, incrementAsync, incrementBy } from './store/counter/counterSlice'
 
 function App() {
+  // get the counters state from the store using the useSelector hook.
  const count = useSelector((state: rootState) => state.counter.value);
- const dispatch = useDispatch()
+
+ // get the dispatch function from the useDispatch hook.
+ const dispatch = useDispatch<AppDispatch>()
 
   return (
     <>
@@ -34,6 +37,10 @@ function App() {
         <br />
         <button onClick={() => dispatch(incrementBy(10))}>
           increment by 10
+        </button>
+        { " "}
+        <button onClick={() => dispatch(incrementAsync(2))}>
+          Async increment
         </button>
 
         
